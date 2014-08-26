@@ -1,0 +1,19 @@
+---
+
+nat_interfaces_list:
+
+  - iface: '{{ nat_interface }}'
+    type: 'bridge'
+    inet: 'static'
+    filename: 'nat_{{ nat_interface }}'
+    weight: '40'
+    options: |
+      address {{ nat_address }}
+      netmask {{ nat_netmask }}
+      bridge_ports none
+      bridge_stp on
+      bridge_fd 0
+      bridge_maxwait 0
+      dns-search {{ nat_domain }}
+
+

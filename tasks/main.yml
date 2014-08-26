@@ -1,0 +1,18 @@
+---
+
+- name: Configure NAT firewall (INPUT table)
+  template: src=etc/ferm/filter-input.d/nat.conf.j2 dest=/etc/ferm/filter-input.d/{{ nat_interface }}_nat.conf
+            owner=root group=root mode=0644
+  notify:
+    - Restart ferm
+
+- name: Configure NAT firewall (other tables)
+  template: src=etc/ferm/ferm.d/nat.conf.j2 dest=/etc/ferm/ferm.d/{{ nat_interface }}_nat.conf
+            owner=root group=root mode=0644
+  notify:
+    - Restart ferm
+
+- name: Reload network configuration if needed for NAT
+  meta: flush_handlers
+
+
