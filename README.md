@@ -1,6 +1,6 @@
 ## nat
 
-[![Travis CI](https://secure.travis-ci.org/debops/ansible-nat.png)](http://travis-ci.org/debops/ansible-nat) [![test-suite](http://img.shields.io/badge/test--suite-ansible--nat-blue.svg)](https://github.com/debops/test-suite/tree/master/ansible-nat/) [![Ansible Galaxy](http://img.shields.io/badge/galaxy-debops.nat-660198.svg)](https://galaxy.ansible.com/list#/roles/1578)[![Platforms](http://img.shields.io/badge/platforms-debian%20|%20ubuntu-lightgrey.svg)](#)
+[![Travis CI](https://secure.travis-ci.org/debops/ansible-nat.png)](http://travis-ci.org/debops/ansible-nat) [![test-suite](http://img.shields.io/badge/test--suite-ansible--nat-blue.svg)](https://github.com/debops/test-suite/tree/master/ansible-nat/) [![Ansible Galaxy](http://img.shields.io/badge/galaxy-debops.nat-660198.svg)](https://galaxy.ansible.com/list#/roles/1578) [![Platforms](http://img.shields.io/badge/platforms-debian%20|%20ubuntu-lightgrey.svg)](#)
 
 `debops.nat` is a helper role which configures internal network on
 a separate bridge interface with NAT or MASQUERADE firewall configuration
