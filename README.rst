@@ -54,7 +54,9 @@ into your playbook.
 Role dependencies
 ~~~~~~~~~~~~~~~~~
 
-- ``debops.ferm``- ``debops.ifupdown``
+- ``debops.ferm``
+- ``debops.ifupdown``
+
 
 Role variables
 ~~~~~~~~~~~~~~
