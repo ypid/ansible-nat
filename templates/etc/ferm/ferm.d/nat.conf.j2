@@ -2,33 +2,28 @@
 
 # iptables ferm firewall - NAT
 
-# Make sure that this only runs in IPv4 network
-@if @eq($DOMAIN, ip) {
+# http://www.redhat.com/archives/libvir-list/2010-August/msg00035.html
+@hook post "iptables -A POSTROUTING -t mangle -p udp --dport 68 -j CHECKSUM --checksum-fill";
 
-	# http://www.redhat.com/archives/libvir-list/2010-August/msg00035.html
-	@hook post "iptables -A POSTROUTING -t mangle -p udp --dport 68 -j CHECKSUM --checksum-fill";
-
-	table filter {
-		chain FORWARD {
-			# Forward connections from NAT to the rest of the world
-			interface {{ nat_interface }} ACCEPT;
-		}
+domain ip table filter {
+	chain FORWARD {
+		# Forward connections from NAT to the rest of the world
+		interface {{ nat_interface }} ACCEPT;
 	}
-
-	table nat {
-		chain POSTROUTING {
-			 destination {{ nat_network }}/{{ nat_netmask }} RETURN;
-	{% if nat_masquerade is defined and nat_masquerade == True %}
-			 source {{ nat_network }}/{{ nat_netmask }} MASQUERADE;
-	{% else %}
-			 source {{ nat_network }}/{{ nat_netmask }} SNAT to {{ ansible_default_ipv4.address }};
-	{% endif %}
-		}
-	}
-
-	@hook pre "echo 0 > /proc/sys/net/ipv4/ip_forward";
-	@hook post "echo 1 > /proc/sys/net/ipv4/ip_forward";
-	@hook flush "echo 0 > /proc/sys/net/ipv4/ip_forward";
-
 }
+
+domain ip table nat {
+	chain POSTROUTING {
+		 destination {{ nat_network }}/{{ nat_netmask }} RETURN;
+{% if nat_masquerade is defined and nat_masquerade == True %}
+		 source {{ nat_network }}/{{ nat_netmask }} MASQUERADE;
+{% else %}
+		 source {{ nat_network }}/{{ nat_netmask }} SNAT to {{ ansible_default_ipv4.address }};
+{% endif %}
+	}
+}
+
+@hook pre "echo 0 > /proc/sys/net/ipv4/ip_forward";
+@hook post "echo 1 > /proc/sys/net/ipv4/ip_forward";
+@hook flush "echo 0 > /proc/sys/net/ipv4/ip_forward";
 
