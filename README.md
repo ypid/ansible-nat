@@ -2,14 +2,16 @@
 
 [![Travis CI](http://img.shields.io/travis/debops/ansible-nat.svg?style=flat)](http://travis-ci.org/debops/ansible-nat) [![test-suite](http://img.shields.io/badge/test--suite-ansible--nat-blue.svg?style=flat)](https://github.com/debops/test-suite/tree/master/ansible-nat/)  [![Ansible Galaxy](http://img.shields.io/badge/galaxy-debops.nat-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/1578)
 
+**This role has been deprecated in favor to [debops.subnetwork](https://github.com/debops/ansible-subnetwork).**
+
 `debops.nat` is a helper role which configures internal network on
 a separate bridge interface with NAT or MASQUERADE firewall configuration
-(network will use non-routable IP address space and access to the Internet
+(the network will use a non-routable IP address space and access to the Internet
 will be provided by the host operating system). This network can be used as
 a development environment for virtual machines or containers.
 
-Configuration of iptables firewall / forwarding and network interfaces will
-be performed by `debops.ferm` and `debops.ifupdown` Ansible roles.
+Configuration of iptables firewall, forwarding and network interfaces will
+be performed by the `debops.ferm` and `debops.ifupdown` roles.
 
 You can use `dnsmasq` server (available via `debops.dnsmasq` Ansible
 role) to complete the network configuration and provide internal DNS/DHCP
