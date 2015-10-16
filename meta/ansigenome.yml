@@ -17,6 +17,8 @@ ansigenome_info:
       github: 'drybjed'
 
   synopsis: |
+    **This role has been deprecated in favor to [debops.subnetwork](https://github.com/debops/ansible-subnetwork).**
+
     `debops.nat` is a helper role which configures internal network on
     a separate bridge interface with NAT or MASQUERADE firewall configuration
     (the network will use a non-routable IP address space and access to the Internet
