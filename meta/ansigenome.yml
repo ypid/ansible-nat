@@ -5,6 +5,10 @@ ansigenome_info:
   git_branch: "master"
   galaxy_id: "1578"
 
+  status:
+    name: "deprecated"
+    note: "It has been superseded by [debops.subnetwork](https://github.com/debops/ansible-subnetwork)."
+
   travis: True
 
   license_url: 'https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)'
@@ -17,18 +21,15 @@ ansigenome_info:
       github: 'drybjed'
 
   synopsis: |
-    **This role has been deprecated in favor to [debops.subnetwork](https://github.com/debops/ansible-subnetwork).**
-
     `debops.nat` is a helper role which configures internal network on
     a separate bridge interface with NAT or MASQUERADE firewall configuration
     (the network will use a non-routable IP address space and access to the Internet
     will be provided by the host operating system). This network can be used as
     a development environment for virtual machines or containers.
-    
+
     Configuration of iptables firewall, forwarding and network interfaces will
     be performed by the `debops.ferm` and `debops.ifupdown` roles.
-    
+
     You can use `dnsmasq` server (available via `debops.dnsmasq` Ansible
     role) to complete the network configuration and provide internal DNS/DHCP
     server.
-
